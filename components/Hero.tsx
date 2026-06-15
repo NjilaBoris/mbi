@@ -10,11 +10,11 @@ const DELETE_SPEED = 45;   // ms per character deleted
 const PAUSE_AFTER  = 1800; // ms to hold the completed word
 const PAUSE_BEFORE = 400;  // ms to pause before typing next word
 
-function useTypingAnimation(words) {
+function useTypingAnimation(words: string[]) {
   const [displayText, setDisplayText] = useState("");
   const [wordIndex, setWordIndex]     = useState(0);
   const [phase, setPhase]             = useState<"typing" | "pausing" | "deleting" | "waiting">("typing");
-  const timeoutRef = useRef();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
 
   useEffect(() => {
     const currentWord = words[wordIndex];
@@ -50,7 +50,9 @@ function useTypingAnimation(words) {
       timeoutRef.current = setTimeout(() => setPhase("typing"), 0);
     }
 
-    return () => clearTimeout(timeoutRef.current);
+   return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current); // ✅ null guard
+    };
   }, [displayText, phase, wordIndex, words]);
 
   return { displayText, isTyping: phase === "typing" };
