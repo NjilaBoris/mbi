@@ -201,7 +201,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h1 className="text-white leading-[1.5] font-semibold w-full lg:w-190 md:w-150" style={{ fontSize: "clamp(0.9rem, 2.5vw, 1.5rem)" }}>
+              <h1 className="text-white leading-[1.5] font-semibold w-full lg:w-190 md:w-150" style={{ fontSize: "clamp(1rem, 2.5vw, 1.5rem)" }}>
                 I am Mbi Aziseh, a civic innovation leader and policy entrepreneur, and the Executive Director of POLITICOS (Policy Lab for Civic Innovation and Community Solutions). 
                 My work sits at the intersection of 
                 {" "}
